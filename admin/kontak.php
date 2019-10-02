@@ -127,7 +127,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                Fandi Jaka
+				                sunaryo
 				              </span>
 				            </div>
 				          </div>
