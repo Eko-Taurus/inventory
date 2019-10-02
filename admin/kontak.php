@@ -119,7 +119,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                Ilman Al Fatehah
+				                Eko Purnomo
 				              </span>
 				            </div>
 				            <div class="col s2">
@@ -127,7 +127,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                Aris Ardiyan
+				                Fandi Jaka
 				              </span>
 				            </div>
 				          </div>
