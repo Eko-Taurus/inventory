@@ -4,7 +4,7 @@ session_start();
   $user = "localhost";
   $name = "root";
   $pass = "";
-  $dbname = "inventori";
+  $dbname = "inventori3";
  
   $con = mysqli_connect($user,$name,$pass,$dbname);
  
@@ -77,7 +77,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		<!--header-->
 		<header>
 			<!--TopNav-->
-	        <nav class="row top-nav red darken-2">
+	        <nav class="row top-nav green darken-2">
 	    		<div class="container">
 	    			<div class="col offset-l2 nav-wrapper">
 	    				<a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
@@ -94,7 +94,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                <li>
 		                	<div class="user-view">
 		                    	<div class="background" style="margin-bottom:-15%;">
-		                    		<img src="../images/bg.jpg">
+		                    		<img src="../images/ag.jpg">
 		                    	</div>
 		                		<span class="white-text name"><?php echo $nama; ?><i class="material-icons left">account_circle</i></span>
 		                	</div>
@@ -110,7 +110,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                		<ul>
 		                			<li><a href="user.php">User</a></li>
 									<li><a href="barangmasuk.php">Barang Masuk</a></li>
-									<li><a href="gudang.php">Gudang</a></li>
+									<li><a href="gudang.php">PUT AWAY</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
 								</ul>
 							</div>
@@ -168,7 +168,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 					<div class="col s12 m6 l6">
 		                <div class="card blue-grey lighten-5">
 		                    <div class="card-content red-text text-darken-2">
-			                    <span class="card-title">Gudang
+			                    <span class="card-title">PUT AWAY
 			                        <i class="medium material-icons left">inbox</i>
 			                        <p class="right"><?php echo $jml4; ?></p>
 			                    </span>
