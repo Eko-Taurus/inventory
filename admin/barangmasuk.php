@@ -90,7 +90,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                		<ul>
 		                			<li><a href="user.php">User</a></li>
 									<li class="active red darken-4"><a>Barang Masuk</a></li>
-									<li><a href="gudang.php">Gudang</a></li>
+									<li><a href="gudang.php">PUT AWAY</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
 								</ul>
 							</div>
@@ -114,7 +114,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 					<div class="col s12 m12 l12">
 						<form name="cari" method="post" action="cari-barang-masuk.php" class="row">
 	                    	<div class="e-input-field col s12 m12 l12">
-	                    		<input type="text" name="cari" placeholder="Masukkan Kode Barang / Nama Barang / Pengirim / Penerima / Tanggal Terima" class="validate" required title="Cari User">
+	                    		<input type="text" name="cari" placeholder="Masukkan No Material Order  " class="validate" required title="Cari User">
 	                    		<input type="submit" name="cari2" value="cari" class="btn right red darken-2"> 
 	                    	</div>
 						</form>
@@ -126,12 +126,14 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 							<!--kolom header table-->
 							<tr>
 			                  <th hidden>ID</th>
+			                  	<th>No PO</th>
 								<th>Kode Barang</th>
 								<th>Nama Barang</th>
 								<th>Pengirim</th>
-								<th>Tanggal Terima</th>
-								<th>Penerima</th>
-								<th>Pengaturan</th>
+								
+								
+								<th>QTY</th>
+								<th>Lokasi</th>
 				            </tr>
 
 							<?php 
@@ -145,7 +147,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				                echo "<td>".$user_data['pengirim']."</td>";
 			                    echo "<td>".$user_data['tanggal']."</td>"; 
 			                    echo "<td>".$user_data['penerima']."</td>";    
-				                echo "<td> <a href='edit-barang-masuk.php?id=$user_data[id]' style='text-decoration: none;'><i class='material-icons' title='Edit $test'>mode_edit</i></a> | <a data-id='1' class='hapus' href='delete-barang-masuk.php?id=$user_data[id]' style='text-decoration: none;'><i class='material-icons' title='Hapus $test'>delete</i></a> </td></tr>";  
+				                echo "<td> <a href='edit-barang-masuk.php?id=$user_data[id]' style='text-decoration: none;'><i class='material-icons' title='add $test'>mode_add</i></a> | <a data-id='1' class='hapus' href='delete-barang-masuk.php?id=$user_data[id]' style='text-decoration: none;'><i class='material-icons' title='Hapus $test'>delete</i></a> </td></tr>";  
 				            }
 
 							?>
@@ -155,7 +157,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 						<table>
 							<tr>
 				            	<td colspan='9'>
-				            		<a href='tambah-barang-masuk.php' class="right waves-effect waves-light btn red darken-2">Tambah Barang<i class="material-icons right">add</i></a>
+				            		
 				            	</td>
 				            </tr>
 						</table>
