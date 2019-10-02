@@ -91,7 +91,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                		<ul>
 		                			<li><a href="user.php">User</a></li>
 									<li class="active red darken-4"><a href="barangmasuk.php">Barang Masuk</a></li>
-									<li><a href="gudang.php">Gudang</a></li>
+									<li><a href="gudang.php">PUT AWAY</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
 								</ul>
 							</div>
@@ -101,14 +101,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                <li><a href="../logout.php" class="collapsible-header">Keluar<i class="material-icons">exit_to_app</i></a></li>
 
 		            </ul>
-	            </li>
-
-	        </ul>
-		</header>
-		<!--end of header-->
-
-		<!--content-->
-		<main>
+	            </li> 
 			<div class="row container">
 				<div class="col s12 m12 l12 offset-l2"> <br>
 					<!--kolom search-->
