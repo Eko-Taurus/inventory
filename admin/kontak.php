@@ -90,7 +90,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                		<ul>
 		                			<li><a href="user.php">User</a></li>
 									<li><a href="barangmasuk.php">Barang Masuk</a></li>
-									<li><a href="gudang.php">Gudang</a></li>
+									<li><a href="gudang.php">PUT AWAY</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
 								</ul>
 							</div>
@@ -127,7 +127,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                sunaryo
+				                Fandi Jaka
 				              </span>
 				            </div>
 				          </div>
@@ -158,7 +158,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                <a href="https://www.facebook.com/Caca.Arini43" style="text-decoration: none;">Ilman Al Fatehah</a>
+				                <a href="https://www.facebook.com/Caca.Arini43" style="text-decoration: none;">Eko Purnomo</a>
 				              </span>
 				            </div>
 				            <div class="col s2">
@@ -166,7 +166,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                <a href="https://www.facebook.com/arissardiyan" style="text-decoration: none;">Aris Ardiyan</a>
+				                <a href="https://www.facebook.com/arissardiyan" style="text-decoration: none;">Fandi Jaka</a>
 				              </span>
 				            </div>
 				          </div>
@@ -192,7 +192,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                <a href="mailto:72are.is@gmail.com" style="text-decoration: none;">72are.is@gmail.com</a>
+				                <a href="mailto:72are.is@gmail.com" style="text-decoration: none;">fandijaka17@gmail.com</a>
 				              </span>
 				            </div>
 				          </div>

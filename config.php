@@ -3,7 +3,7 @@
  $dbhost = 'localhost';
  $dbuser = 'root';
  $dbpass = '';
- $dbname = 'inventori';
+ $dbname = 'inventori3';
  
  $koneksi = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
  

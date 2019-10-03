@@ -89,7 +89,7 @@ if( !isset($_SESSION['user']) )
 		                		<ul>
 		                			<li class="active red darken-4"><a>User</a></li>
 									<li><a href="barangmasuk.php">Barang Masuk</a></li>
-									<li><a href="gudang.php">Gudang</a></li>
+									<li><a href="gudang.php">PUT AWAY</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
 								</ul>
 							</div>

@@ -91,7 +91,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                			<li><a href="user.php">User</a></li>
 									<li class="active red darken-4"><a>Barang Masuk</a></li>
 									<li><a href="gudang.php">PUT AWAY</a></li>
-									<li><a href="barangkeluar.php">Barang Keluar</a></li>
+									<li><a href="barangkeluar.php">PICKER</a></li>
 								</ul>
 							</div>
 		                </li>

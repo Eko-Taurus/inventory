@@ -111,7 +111,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                			<li><a href="user.php">User</a></li>
 									<li><a href="barangmasuk.php">Barang Masuk</a></li>
 									<li><a href="gudang.php">PUT AWAY</a></li>
-									<li><a href="barangkeluar.php">Barang Keluar</a></li>
+									<li><a href="barangkeluar.php">PICKER</a></li>
 								</ul>
 							</div>
 		                </li>
@@ -185,7 +185,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 					<div class="col s12 m6 l6">
 		                <div class="card blue-grey lighten-5">
 		                    <div class="card-content red-text text-darken-2">
-			                    <span class="card-title">Barang Keluar
+			                    <span class="card-title">PICKER
 			                        <i class="medium material-icons left">inbox</i>
 			                        <p class="right"><?php echo $jml3; ?></p>
 			                    </span>
