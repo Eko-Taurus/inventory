@@ -2,14 +2,13 @@
 include_once("../config.php");
 $result = mysqli_query($koneksi, "SELECT * FROM barang_keluar ORDER BY kode_barang DESC");
 
-if( !isset($_SESSION['admin']) )
+if( !isset($_SESSION['user']) )
 {
-  header('location:./../'.$_SESSION['akses']);
-  exit();
+	header('location:./../'.$_SESSION['akses']);
+	exit();
+}else{
+	$nama = $_SESSION['user'];
 }
-
-$nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -119,7 +118,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                Eko Purnomo
+				                Ilman Al Fatehah
 				              </span>
 				            </div>
 				            <div class="col s2">
@@ -127,7 +126,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                Fandi Jaka
+				                Aris Ardiyan
 				              </span>
 				            </div>
 				          </div>
@@ -158,7 +157,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                <a href="https://web.facebook.com/eko.purnomo.1105" style="text-decoration: none;">Eko Purnomo</a>
+				                <a href="https://www.facebook.com/Caca.Arini43" style="text-decoration: none;">Ilman Al Fatehah</a>
 				              </span>
 				            </div>
 				            <div class="col s2">
@@ -166,7 +165,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                <a href="https://web.facebook.com/fandijaka.prikitiew" style="text-decoration: none;">Fandi Jaka</a>
+				                <a href="https://www.facebook.com/arissardiyan" style="text-decoration: none;">Aris Ardiyan</a>
 				              </span>
 				            </div>
 				          </div>
@@ -180,11 +179,11 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				        <div class="card-panel lighten-5 z-depth-2">
 				          <div class="row valign-wrapper">
 				            <div class="col s2">
-				              <img src="../images/1.jpg" alt="Eko Purnomo" class="circle responsive-img"> 
+				              <img src="../images/1.jpg" alt="Ilman Al Fatehah" class="circle responsive-img"> 
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                <a href="mailto:ekopurnama115@gmail.com" style="text-decoration: none;">ekopurnama115@gmail.com</a>
+				                <a href="mailto:ilmanvhadam43@gmail.com" style="text-decoration: none;">Ilmanvhadam43@gmail.com</a>
 				              </span>
 				            </div>
 				            <div class="col s2">
@@ -192,7 +191,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				            </div>
 				            <div class="col s12">
 				              <span class="black-text">
-				                <a href="mailto:fandijaka17@gmail.com" style="text-decoration: none;">fandijaka17@gmail.com</a>
+				                <a href="mailto:72are.is@gmail.com" style="text-decoration: none;">72are.is@gmail.com</a>
 				              </span>
 				            </div>
 				          </div>
