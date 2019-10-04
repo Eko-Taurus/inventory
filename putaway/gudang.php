@@ -60,7 +60,7 @@ if( !isset($_SESSION['user']) )
 	    		<div class="container">
 	    			<div class="col offset-l2 nav-wrapper">
 	    				<a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-	    				<a class="page-title">PUT AWAY</a>
+	    				<a class="page-title">Gudang</a>
 	    			</div>
 	    		</div>
 			</nav>
@@ -89,7 +89,7 @@ if( !isset($_SESSION['user']) )
 		                		<ul>
 		                			<li><a href="user.php">User</a></li>
 									<li><a href="barangmasuk.php">Barang Masuk</a></li>
-									<li class="active red darken-4"><a>PUT AWAY</a></li>
+									<li class="active red darken-4"><a>Gudang</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
 								</ul>
 							</div>

@@ -4,7 +4,7 @@ session_start();
   $user = "localhost";
   $name = "root";
   $pass = "";
-  $dbname = "inventori3";
+  $dbname = "inventori";
  
   $con = mysqli_connect($user,$name,$pass,$dbname);
  
