@@ -61,7 +61,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 	    		<div class="container">
 	    			<div class="col offset-l2 nav-wrapper">
 	    				<a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-	    				<a class="page-title">PICKER</a>
+	    				<a class="page-title">PICK ENTRY</a>
 	    			</div>
 	    		</div>
 			</nav>
@@ -90,8 +90,8 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                		<ul>
 		                			<li><a href="user.php">User</a></li>
 									<li><a href="barangmasuk.php">Barang Masuk</a></li>
-									<li class="active red darken-4"><a>PUT AWAY</a></li>
-									<li><a href="barangkeluar.php">PICKER</a></li>
+									<li><a href="gudang.php>">PUT AWAY</a></li>
+									<li class="active red darken-4">PICKER</li>
 								</ul>
 							</div>
 		                </li>
@@ -112,13 +112,69 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 				<div class="col s12 m12 l12 offset-l2"> <br>
 					<!--kolom search-->
 					<div class="col s12 m12 l12">
-						<form name="cari" method="post" action="cari-digudang.php" class="row">
-	                    	<div class="e-input-field col s12 m12 l12">
-	                    		<input type="text" name="cari" placeholder="Masukkan Kode Barang / Nama Barang / Pengirim / Penerima / Tanggal Terima" class="validate" required title="Cari User">
-	                    		<input type="submit" name="cari2" value="cari" class="btn right red darken-2"> 
-	                    	</div>
-						</form>
+						 
 					</div>
+
+					<!--table-->
+					<div class="col s12 m12 l12 card-panel z-depth"> <br>
+						<table class="highlight">
+							<!--kolom header table-->							
+							<tr>
+								<td>SO ID</td>
+								<td>:</td>
+								<td>isi_dari_db</td>
+								<td></td>
+								<td>No PO</td>
+								<td>:</td>
+								<td>isi_dari_db</td>
+				            </tr>
+				            <tr>
+								<td>SO NUMBER</td>
+								<td>:</td>
+								<td>isi_dari_db</td>
+								<td></td>
+								<td>Tanggal PO</td>
+								<td>:</td>
+								<td>isi_dari_db</td>
+				            </tr>
+				            <tr>
+								<td>Tanggal SO</td>
+								<td>:</td>
+								<td>isi_dari_db</td>
+								<td></td>
+								
+				            </tr>							
+						</table>
+					</div>
+
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Tambah">Tambah Baris</button>
+
+					<div id="Tambah" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+							         <h4 class="modal-title"> Tambah Baris</h4>		
+					      </div>
+					      <form method="post" enctype="multipart/form-data">
+					      	<div class="modal-body">
+					      		<div class="form-group">
+					      			<label class="control-label" for="Lokasi">Lokasi</label>
+					      			<input type="text" name="Lokasi" class="form-control" id="Lokasi" required>
+					      		</div>
+					      		<div class="form-group">
+					      			<label class="control-label" for="Jumlah">Jumlah</label>
+					      			<input type="text" name="Jumlah" class="form-control" id="Jumlah" required>
+					      		</div>
+					      	</div>
+					      	<div class="form-footer">
+					      		<button type="reset" class="btn btn-danger">Reset</button>
+					      		<input type="submit" class="btn btn-success" name="Tambah" value="simpan">
+					      	</div>
+					      </form>
+					  </div>		
+					</div>
+				</div>	
 
 					<!--table-->
 					<div class="col s12 m12 l12 card-panel z-depth"> <br>
@@ -126,12 +182,12 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 							<!--kolom header table-->
 							<tr>
 			                  <th hidden>IDXSO</th>	
-			                  	<th>
-			                  		<li><a href="pick_entry.php">SO ID</a></li></th>
-								<th>Kode Barang</th>
+			                  	<th>NO</th> 
+			                  	<th>Kode Barang</th>
 								<th>Nama Barang</th>
 								<th>Lokasi</th>
 								<th>Jumlah</th>
+							
 				            </tr>
 
 							<?php 
