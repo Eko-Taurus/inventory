@@ -91,7 +91,7 @@ if( !isset($_SESSION['user']) )
 		                	<div class="collapsible-body">
 		                		<ul>
 		                			<li class="active red darken-4"><a>User</a></li>
-									<li><a href="barangmasuk.php">Barang Masuk</a></li>
+									<li><a href="barangmasuk.php">SalesOrder</a></li>
 									<li><a href="gudang.php">PUT AWAY</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
 								</ul>
@@ -119,6 +119,10 @@ if( !isset($_SESSION['user']) )
 					<div class="col s12 m12 l12 card-panel z-depth"> <br>
 						<table class="highlight">
 							<!--kolom isian table-->
+
+				              <th>No</th>
+				              <th><input type="text" name="No" required></th>
+				            </tr>
 							<tr>
 				              <th>Kode Barang</th>
 				              <th><input type="text" name="kode_barang" required></th>

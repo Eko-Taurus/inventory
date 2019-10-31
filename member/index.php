@@ -107,7 +107,7 @@ if( !isset($_SESSION['user']) )
                       <div class="collapsible-body">
                         <ul>
                           <li><a href="user.php">User</a></li>
-                  <li><a href="barangmasuk.php">Barang Masuk</a></li>
+                  <li><a href="barangmasuk.php">SalesOrder</a></li>
                   <li><a href="gudang.php">Gudang</a></li>
                   <li><a href="barangkeluar.php">Barang Keluar</a></li>
                 </ul>
@@ -150,7 +150,7 @@ if( !isset($_SESSION['user']) )
           <div class="col s12 m6 l6">
                     <div class="card blue-grey lighten-5">
                         <div class="card-content red-text text-darken-2">
-                          <span class="card-title">Barang Masuk
+                          <span class="card-title">SalesOrder
                               <i class="medium material-icons left">archive</i>
                               <p class="right"><?php echo $jml2; ?></p>
                           </span>

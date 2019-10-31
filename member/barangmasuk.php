@@ -146,7 +146,7 @@ if( !isset($_SESSION['user']) )
 				                echo "<tr>";
 			                    echo "<td hidden>".$user_data['id']."</td>";
 				                echo "<td>".$user_data['kode_barang']."</td>";
-				                echo "<td>".S$user_data['nama_barang']."</td>";
+				                echo "<td>".$user_data['nama_barang']."</td>";
 				                echo "<td>".$user_data['pengirim']."</td>";
 			                    echo "<td>".$user_data['tanggal']."</td>"; 
 			                    echo "<td>".$user_data['penerima']."</td>";    
