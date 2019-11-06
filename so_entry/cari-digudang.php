@@ -1,6 +1,7 @@
 <?php session_start();
 include_once("../config.php");
-$result = mysqli_query($koneksi, "SELECT * FROM barang_masuk ORDER BY kode_barang DESC");
+$conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
+$result = mysqli_query($koneksi, "SELECT * FROM gudang ORDER BY kode_barang DESC");
 
 if( !isset($_SESSION['user']) )
 {
@@ -60,7 +61,7 @@ if( !isset($_SESSION['user']) )
 	    		<div class="container">
 	    			<div class="col offset-l2 nav-wrapper">
 	    				<a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-	    				<a class="page-title">Sales Order</a>
+	    				<a class="page-title">Cari Di Gudang</a>
 	    			</div>
 	    		</div>
 			</nav>
@@ -88,8 +89,8 @@ if( !isset($_SESSION['user']) )
 		                	<div class="collapsible-body">
 		                		<ul>
 		                			<li><a href="user.php">User</a></li>
-									<li class="active red darken-4"><a>SO</a></li>
-									<li><a href="gudang.php">PUT AWAY</a></li>
+									<li><a href="barangmasuk.php">Barang Masuk</a></li>
+									<li class="active red darken-4"><a href="gudang.php">Gudang</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
 								</ul>
 							</div>
@@ -112,9 +113,9 @@ if( !isset($_SESSION['user']) )
 				<div class="col s12 m12 l12 offset-l2"> <br>
 					<!--kolom search-->
 					<div class="col s12 m12 l12">
-						<form name="cari" method="post" action="cari-barang-masuk.php" class="row">
+						<form name="cari" method="post" action="" class="row">
 	                    	<div class="e-input-field col s12 m12 l12">
-	                    		<input type="text" name="cari" placeholder="Masukkan Kode Barang / Nama Barang / Pengirim / Penerima / Tanggal Terima" class="validate" required title="Cari User">
+	                    		<input type="text" name="cari" placeholder="Masukkan Nama / NIK / Telepon" class="validate" required title="Cari User">
 	                    		<input type="submit" name="cari2" value="cari" class="btn right red darken-2"> 
 	                    	</div>
 						</form>
@@ -124,43 +125,51 @@ if( !isset($_SESSION['user']) )
 					<div class="col s12 m12 l12 card-panel z-depth"> <br>
 						<table class="highlight">
 							<!--kolom header table-->
-							<tr>
-			                  <th hidden>IDXSO</th>
-								
-								<th>
-			                  		<li><a href="so_entry.php">SO_ID</a></li></th>
-								<th>dx</th>
-								<th>No SO</th>
-								<th>Tanggal</th>
-								<th>No_PO</th>
-								<th>Tanggal PO</th>
-								<th>Kode Barang</th>
-								<th>Qty</th>
-								<th>User</th>
-				            </tr>
+							
 
 							<?php 
 
-							while($user_data = mysqli_fetch_array($result)) { 
-			                    $test = $user_data['nama_barang'];      
-				                echo "<tr>";
-			                    echo "<td hidden>".$user_data['id']."</td>";
-				                echo "<td>".$user_data['kode_barang']."</td>";
-				                echo "<td>".$user_data['nama_barang']."</td>";
-				                echo "<td>".$user_data['pengirim']."</td>";
-			                    echo "<td>".$user_data['tanggal']."</td>"; 
-			                    echo "<td>".$user_data['penerima']."</td>";    
-				                echo "</tr>";  
-				            }
+				                if(isset($_POST['cari2'])){
+			                    $no = 1; //buat urutan nomer
+			                    $cari = $_POST['cari'];
+			                    $sql = "SELECT * FROM gudang WHERE kode_barang LIKE '%$cari%' OR nama_barang LIKE '%$cari%' OR pengirim LIKE '%$cari%' OR tanggal LIKE '%$cari%' OR penerima LIKE '%$cari%'";
+			                    $query = mysqli_query($conn,$sql);
+			                    
+			                      if($data = mysqli_fetch_array($query)){
 
-							?>
+			                        echo "
+			                        	<tr>
+						                	<th hidden>ID</th>
+											<th>Kode Barang</th>
+											<th>Nama Barang</th>
+											<th>Pengirim</th>
+											<th>Tanggal</th>
+											<th>Penerima</th>
+							            </tr>
+				            		";
 
+			                        echo "<tr>";
+			                        echo "<td hidden>".$data['id']."</td>";
+			                        echo "<td>".$data['kode_barang']."</td>";
+			                        echo "<td>".$data['nama_barang']."</td>";
+			                        echo "<td>".$data['pengirim']."</td>";
+			                        echo "<td>".$data['tanggal']."</td>";
+			                        echo "<td>".$data['penerima'];  
+			                        echo "</tr>";
+			                        echo "</table>";
+			                      }else{
+			                      	echo "<table>";
+			                        echo "<tr><td colspan='4'><center><h6><b>'$cari'</b> Tidak Ditemukan. Silahkan Periksa Kembali Keyword Anda</h6></center></td></tr>";
+			                      }
+			                    }
+			                ?>
+
+							
 						</table>
-
 						<table>
 							<tr>
 				            	<td colspan='9'>
-				            		<a href='tambah-barang-masuk.php' class="right waves-effect waves-light btn red darken-2">Tambah Barang<i class="material-icons right">add</i></a>
+				            		<a href='gudang.php' class="right waves-effect waves-light btn red darken-2">KEMBALI</a>
 				            	</td>
 				            </tr>
 						</table>
@@ -175,25 +184,6 @@ if( !isset($_SESSION['user']) )
 
 	<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../js/materialize.min.js"></script>
-	<script>
-        $(".hapus").click(function () {
-        var jawab = confirm("Anda Yakin Ingin Menghapus Barang ?");
-        if (jawab === true) {
-        // konfirmasi
-            var hapus = false;
-            if (!hapus) {
-                hapus = true;
-                $.post('delete.php', {id: $(this).attr('data-id')},
-                function (data) {
-                    alert(data);
-                });
-                hapus = false;
-            }
-        } else {
-            return false;
-        }
-        });
-      </script>
 	<script type="text/javascript">
 	  	$(document).ready(function(){
 	    	$('.collapsible').collapsible();

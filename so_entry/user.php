@@ -1,6 +1,6 @@
 <?php session_start();
 include_once("../config.php");
-$result = mysqli_query($koneksi, "SELECT * FROM barang_masuk ORDER BY kode_barang DESC");
+$result = mysqli_query($koneksi, "SELECT * FROM users ORDER BY nik DESC");
 
 if( !isset($_SESSION['user']) )
 {
@@ -60,7 +60,7 @@ if( !isset($_SESSION['user']) )
 	    		<div class="container">
 	    			<div class="col offset-l2 nav-wrapper">
 	    				<a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-	    				<a class="page-title">Sales Order</a>
+	    				<a class="page-title">User</a>
 	    			</div>
 	    		</div>
 			</nav>
@@ -87,9 +87,9 @@ if( !isset($_SESSION['user']) )
 		                	<a class="collapsible-header">Menu<i class="material-icons">arrow_drop_down</i></a>
 		                	<div class="collapsible-body">
 		                		<ul>
-		                			<li><a href="user.php">User</a></li>
-									<li class="active red darken-4"><a>SO</a></li>
-									<li><a href="gudang.php">PUT AWAY</a></li>
+		                			<li class="active red darken-4"><a>User</a></li>
+									<li><a href="barangmasuk.php">Barang Masuk</a></li>
+									<li><a href="gudang.php">Gudang</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
 								</ul>
 							</div>
@@ -112,9 +112,9 @@ if( !isset($_SESSION['user']) )
 				<div class="col s12 m12 l12 offset-l2"> <br>
 					<!--kolom search-->
 					<div class="col s12 m12 l12">
-						<form name="cari" method="post" action="cari-barang-masuk.php" class="row">
+						<form name="cari" method="post" action="cari-user.php" class="row">
 	                    	<div class="e-input-field col s12 m12 l12">
-	                    		<input type="text" name="cari" placeholder="Masukkan Kode Barang / Nama Barang / Pengirim / Penerima / Tanggal Terima" class="validate" required title="Cari User">
+	                    		<input type="text" name="cari" placeholder="Cari Berdasarkan Nama / NIK / Telepon / Status / Devisi / Loker" class="validate" required title="Cari User">
 	                    		<input type="submit" name="cari2" value="cari" class="btn right red darken-2"> 
 	                    	</div>
 						</form>
@@ -125,44 +125,37 @@ if( !isset($_SESSION['user']) )
 						<table class="highlight">
 							<!--kolom header table-->
 							<tr>
-			                  <th hidden>IDXSO</th>
-								
-								<th>
-			                  		<li><a href="so_entry.php">SO_ID</a></li></th>
-								<th>dx</th>
-								<th>No SO</th>
-								<th>Tanggal</th>
-								<th>No_PO</th>
-								<th>Tanggal PO</th>
-								<th>Kode Barang</th>
-								<th>Qty</th>
-								<th>User</th>
+			                  <th hidden>ID</th>
+								<th>NIK</th>
+								<th>Nama</th>
+								<th>Alamat</th>
+								<th>Telepon</th>
+								<th>Status</th>
+								<th>Divisi</th>
+								<th>LOKER</th>
 				            </tr>
 
 							<?php 
 
 							while($user_data = mysqli_fetch_array($result)) { 
-			                    $test = $user_data['nama_barang'];      
+			                    $test = $user_data['nama']; 
 				                echo "<tr>";
 			                    echo "<td hidden>".$user_data['id']."</td>";
-				                echo "<td>".$user_data['kode_barang']."</td>";
-				                echo "<td>".$user_data['nama_barang']."</td>";
-				                echo "<td>".$user_data['pengirim']."</td>";
-			                    echo "<td>".$user_data['tanggal']."</td>"; 
-			                    echo "<td>".$user_data['penerima']."</td>";    
-				                echo "</tr>";  
+				                echo "<td> <h6>".$user_data['nik']."</h6></td>";
+				                echo "<td> <h6>".$user_data['nama']."</h6> </td>";
+				                $lenght = 15;
+				                $alamat = $user_data['alamat'];
+				                echo "<td> <h6>".substr($alamat, 0, $lenght).' ...'."</h6> </td>";
+				                echo "<td><h6>".$user_data['telepon']."</h6></td>";
+			                    echo "<td><h6>".$user_data['level']."</h6></td>"; 
+			                    echo "<td><h6>".$user_data['divisi']."</h6></td>"; 
+			                    echo "<td><h6>".$user_data['loker']." </h6></td>";  
+				                echo "</tr>";
 				            }
 
 							?>
 
-						</table>
-
-						<table>
-							<tr>
-				            	<td colspan='9'>
-				            		<a href='tambah-barang-masuk.php' class="right waves-effect waves-light btn red darken-2">Tambah Barang<i class="material-icons right">add</i></a>
-				            	</td>
-				            </tr>
+							
 						</table>
 					</div>
 				</div>
@@ -175,9 +168,15 @@ if( !isset($_SESSION['user']) )
 
 	<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../js/materialize.min.js"></script>
+	<script type="text/javascript">
+	  	$(document).ready(function(){
+	    	$('.collapsible').collapsible();
+	    	$(".button-collapse").sideNav();
+		});
+	</script>
 	<script>
         $(".hapus").click(function () {
-        var jawab = confirm("Anda Yakin Ingin Menghapus Barang ?");
+        var jawab = confirm("Anda Yakin Ingin Menghapus User ?");
         if (jawab === true) {
         // konfirmasi
             var hapus = false;
@@ -194,11 +193,5 @@ if( !isset($_SESSION['user']) )
         }
         });
       </script>
-	<script type="text/javascript">
-	  	$(document).ready(function(){
-	    	$('.collapsible').collapsible();
-	    	$(".button-collapse").sideNav();
-		});
-	</script>
 </body>
 </html>

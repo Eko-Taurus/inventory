@@ -60,7 +60,7 @@ if( !isset($_SESSION['user']) )
 	    		<div class="container">
 	    			<div class="col offset-l2 nav-wrapper">
 	    				<a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-	    				<a class="page-title">Sales Order</a>
+	    				<a class="page-title">Barang Masuk</a>
 	    			</div>
 	    		</div>
 			</nav>
@@ -88,8 +88,8 @@ if( !isset($_SESSION['user']) )
 		                	<div class="collapsible-body">
 		                		<ul>
 		                			<li><a href="user.php">User</a></li>
-									<li class="active red darken-4"><a>SO</a></li>
-									<li><a href="gudang.php">PUT AWAY</a></li>
+									<li class="active red darken-4"><a>Barang Masuk</a></li>
+									<li><a href="gudang.php">Gudang</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
 								</ul>
 							</div>
@@ -125,18 +125,12 @@ if( !isset($_SESSION['user']) )
 						<table class="highlight">
 							<!--kolom header table-->
 							<tr>
-			                  <th hidden>IDXSO</th>
-								
-								<th>
-			                  		<li><a href="so_entry.php">SO_ID</a></li></th>
-								<th>dx</th>
-								<th>No SO</th>
-								<th>Tanggal</th>
-								<th>No_PO</th>
-								<th>Tanggal PO</th>
+			                  <th hidden>ID</th>
 								<th>Kode Barang</th>
-								<th>Qty</th>
-								<th>User</th>
+								<th>Nama Barang</th>
+								<th>Pengirim</th>
+								<th>Tanggal Terima</th>
+								<th>Penerima</th>
 				            </tr>
 
 							<?php 

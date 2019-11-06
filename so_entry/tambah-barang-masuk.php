@@ -1,6 +1,9 @@
 <?php session_start();
+error_reporting(0);
 include_once("../config.php");
-$result = mysqli_query($koneksi, "SELECT * FROM barang_masuk ORDER BY kode_barang DESC");
+$result = mysqli_query($koneksi, "SELECT * FROM barang_masuk ORDER BY kode_barang DESC"); 
+$result2 = mysqli_query($koneksi, "SELECT * FROM gudang ORDER BY kode_barang DESC"); 
+
 
 if( !isset($_SESSION['user']) )
 {
@@ -60,7 +63,7 @@ if( !isset($_SESSION['user']) )
 	    		<div class="container">
 	    			<div class="col offset-l2 nav-wrapper">
 	    				<a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-	    				<a class="page-title">Sales Order</a>
+	    				<a class="page-title">Tambah User</a>
 	    			</div>
 	    		</div>
 			</nav>
@@ -87,9 +90,9 @@ if( !isset($_SESSION['user']) )
 		                	<a class="collapsible-header">Menu<i class="material-icons">arrow_drop_down</i></a>
 		                	<div class="collapsible-body">
 		                		<ul>
-		                			<li><a href="user.php">User</a></li>
-									<li class="active red darken-4"><a>SO</a></li>
-									<li><a href="gudang.php">PUT AWAY</a></li>
+		                			<li class="active red darken-4"><a>User</a></li>
+									<li><a href="barangmasuk.php">Barang Masuk</a></li>
+									<li><a href="gudang.php">Gudang</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
 								</ul>
 							</div>
@@ -109,91 +112,76 @@ if( !isset($_SESSION['user']) )
 		<!--content-->
 		<main>
 			<div class="row container">
-				<div class="col s12 m12 l12 offset-l2"> <br>
-					<!--kolom search-->
-					<div class="col s12 m12 l12">
-						<form name="cari" method="post" action="cari-barang-masuk.php" class="row">
-	                    	<div class="e-input-field col s12 m12 l12">
-	                    		<input type="text" name="cari" placeholder="Masukkan Kode Barang / Nama Barang / Pengirim / Penerima / Tanggal Terima" class="validate" required title="Cari User">
-	                    		<input type="submit" name="cari2" value="cari" class="btn right red darken-2"> 
-	                    	</div>
-						</form>
-					</div>
+				<div class="col s12 m12 l10 offset-l3"> <br>
 
 					<!--table-->
+				<form action="" method="post" name="form1">
 					<div class="col s12 m12 l12 card-panel z-depth"> <br>
 						<table class="highlight">
-							<!--kolom header table-->
+							<!--kolom isian table-->
 							<tr>
-			                  <th hidden>IDXSO</th>
-								
-								<th>
-			                  		<li><a href="so_entry.php">SO_ID</a></li></th>
-								<th>dx</th>
-								<th>No SO</th>
-								<th>Tanggal</th>
-								<th>No_PO</th>
-								<th>Tanggal PO</th>
-								<th>Kode Barang</th>
-								<th>Qty</th>
-								<th>User</th>
+				              <th>Kode Barang</th>
+				              <th><input type="text" name="kode_barang" required></th>
 				            </tr>
-
-							<?php 
-
-							while($user_data = mysqli_fetch_array($result)) { 
-			                    $test = $user_data['nama_barang'];      
-				                echo "<tr>";
-			                    echo "<td hidden>".$user_data['id']."</td>";
-				                echo "<td>".$user_data['kode_barang']."</td>";
-				                echo "<td>".$user_data['nama_barang']."</td>";
-				                echo "<td>".$user_data['pengirim']."</td>";
-			                    echo "<td>".$user_data['tanggal']."</td>"; 
-			                    echo "<td>".$user_data['penerima']."</td>";    
-				                echo "</tr>";  
-				            }
-
-							?>
-
+			              	<tr>
+			                	<th>Nama Barang</th>
+			                	<th><input type="text" name="nama_barang" required></th>
+			              	</tr>
+			              	<tr>
+			                	<th>Pengirim</th>
+			                	<th><input type="text" name="pengirim" required></th>
+			             	</tr>
+			             	<tr>
+			                	<th>Tanggal</th>
+			                	<th><input type="date" name="tanggal" required></th>
+			              	</tr>
+			              	<tr>
+			                	<th>Penerima</th>
+			                	<th><input type="text" name="penerima" required></th>
+			              	</tr>
 						</table>
-
 						<table>
-							<tr>
-				            	<td colspan='9'>
-				            		<a href='tambah-barang-masuk.php' class="right waves-effect waves-light btn red darken-2">Tambah Barang<i class="material-icons right">add</i></a>
-				            	</td>
+				            <tr>
+				            	<th>
+				            		<input type="submit" name="tambah" value="Input Barang" class="right waves-effect waves-light btn green darken-2" style="float: left;">
+				            	</th>
+				            	<th style="width: 1%;">
+				            		<a href="barangmasuk.php"><input type="button" value="Kembali" class="right waves-effect waves-light btn red darken-2"></a> 
+				            	</th>
 				            </tr>
-						</table>
+				        </table>
 					</div>
+				</form>
 				</div>
 			</div>
 		</main>
         <!--end of content-->
 
+        <?php
+ 
+          // Check If form submitted, insert form data into users table.
+          if(isset($_POST['tambah'])) {
+            $kode_barang = $_POST['kode_barang'];
+            $name = $_POST['nama_barang'];
+            $pengirim = $_POST['pengirim'];
+            $tanggal = $_POST['tanggal'];
+            $penerima = $_POST['penerima'];
+            
+            // include database connection file
+            include_once("../config.php");
+                
+            // Insert user data into table
+            $result = mysqli_query($koneksi, "INSERT INTO barang_masuk(kode_barang,nama_barang,pengirim,tanggal,penerima) VALUES('$kode_barang','$name','$pengirim','$tanggal','$penerima')"); 
+            $result2 = mysqli_query($koneksi, "INSERT INTO gudang(kode_barang,nama_barang,pengirim,tanggal,penerima) VALUES('$kode_barang','$name','$pengirim','$tanggal','$penerima')"); 
+            
+            echo "<script>alert('Tambah Barang Berhasil ! Kode Barang : $kode_barang')</script>";
+          }
+        ?>
 
-	</div>
+        </div>
 
 	<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../js/materialize.min.js"></script>
-	<script>
-        $(".hapus").click(function () {
-        var jawab = confirm("Anda Yakin Ingin Menghapus Barang ?");
-        if (jawab === true) {
-        // konfirmasi
-            var hapus = false;
-            if (!hapus) {
-                hapus = true;
-                $.post('delete.php', {id: $(this).attr('data-id')},
-                function (data) {
-                    alert(data);
-                });
-                hapus = false;
-            }
-        } else {
-            return false;
-        }
-        });
-      </script>
 	<script type="text/javascript">
 	  	$(document).ready(function(){
 	    	$('.collapsible').collapsible();
