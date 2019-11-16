@@ -9,7 +9,7 @@ if( !isset($_SESSION['admin']) )
 }
 
 $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
-
+$navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 ?>
 <!DOCTYPE html>
 <html>
@@ -88,10 +88,12 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                	<a class="collapsible-header">Menu<i class="material-icons">arrow_drop_down</i></a>
 		                	<div class="collapsible-body">
 		                		<ul>
-		                			<li class="active red darken-4"><a>User</a></li>
+		                			<!--<li class="active red darken-4"><a>User</a></li>
 									<li><a href="barangmasuk.php">Barang Masuk</a></li>
 									<li><a href="gudang.php">PUT AWAY</a></li>
 									<li><a href="barangkeluar.php">Barang Keluar</a></li>
+									-->
+									<?php echo $navSide;?>
 								</ul>
 							</div>
 		                </li>

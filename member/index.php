@@ -107,10 +107,8 @@ if( !isset($_SESSION['user']) )
                       <div class="collapsible-body">
                         <ul>
                           <li><a href="user.php">User</a></li>
-                  <li><a href="barangmasuk.php">SalesOrder</a></li>
-                  <li><a href="gudang.php">Gudang</a></li>
-                  <li><a href="barangkeluar.php">Barang Keluar</a></li>
-                </ul>
+                  <li><a href="salesorder.php">SalesOrder</a></li>
+                  </ul>
               </div>
                     </li>
                     <li><a href="kontak.php" class="collapsible-header">Teams<i class="material-icons">contacts</i></a></li>
@@ -158,7 +156,7 @@ if( !isset($_SESSION['user']) )
                         
                         <div class="card-action">
                           <i class="material-icons left red-text text-darken-2">visibility</i>
-                          <a href="barangmasuk.php" class="red-text text-darken-2">Lihat</a>
+                          <a href="salesorder.php" class="red-text text-darken-2">Lihat</a>
                         </div>
                     </div>
                   </div>

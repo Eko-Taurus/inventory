@@ -3,7 +3,7 @@
  $dbhost = 'localhost';
  $dbuser = 'root';
  $dbpass = '';
- $dbname = 'inventori3';
+ $dbname = 'babatan28_2018';//inventori3
  
  $koneksi = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
  

@@ -25,14 +25,14 @@ if( strlen($username) < 2 )
 	# Escape String, ubah semua karakter ke bentuk string
 	$username = $koneksi->escape_string($username);
 	$password = $koneksi->escape_string($password);
-
+	$password =md5($password);
 
 	# SQL command untuk memilih data berdasarkan parameter $username dan $password yang 
 	# di inputkan
-	$sql = "SELECT nama, level FROM users 
-			WHERE username='$username' 
-			AND password='$password' LIMIT 1";
-
+	#$sql = "SELECT nama, level FROM users 
+	#		WHERE username='$username' 
+	#		AND password='$password' LIMIT 1";
+	$sql = "SELECT nama,hakakses from tbl_user where username ='$username' and password='$password' limit 1";
 	# melakukan perintah
 	$query = $koneksi->query($sql);
 
@@ -51,9 +51,36 @@ if( strlen($username) < 2 )
 		
 		# data nama disimpan di session browser
 		$_SESSION['user'] = $row['nama']; 
-		$_SESSION['akses']	   = $row['level'];
-
-		if( $row['level'] == 'admin')
+		//$_SESSION['akses']	   = $row['level'];
+		$_SESSION['hakakses']	   = $row['hakakses'];//level
+		
+		#---MERUBAH KODE HAKAKSES SESUAI DIRECTORY
+		$res="";		
+		switch ($row['hakakses']) {
+			case '1':
+				$res='member';
+				break;
+			case '9':
+				$res='admin';
+				break;
+			default:
+				$res='member';
+				break;
+		}
+		//
+		//$_SESSION['navSide'] = $res;
+		//next masukan semua bagian dalam sidebar
+		//
+		$navUser='<li><a href="user.php">User</a></li>';
+		$navRCV='<li><a href="barangmasuk.php">Barang Masuk</a></li>';
+		$navPA='<li><a href="gudang.php">PUT AWAY</a></li>';
+		$navPicker='<li><a href="barangkeluar.php">PICKER</a></li>';
+		$navSO='<li><a href="salesorder.php">SALES ORDER</a></li>';
+		$_SESSION['navSide']=$navUser.$navRCV.$navPA.$navPicker.$navSO;
+		//
+		$_SESSION['akses']	   = $res;//level
+		//if( $row['level'] == 'admin')
+		if ($res=='admin')
 		{
 			# data hak Admin di set
 			$_SESSION['admin']= 'TRUE';

@@ -1,6 +1,7 @@
 <?php session_start();
 include_once("../config.php");
-$result = mysqli_query($koneksi, "SELECT * FROM barang_masuk ORDER BY kode_barang DESC");
+$result = mysqli_query($koneksi, "SELECT * FROM tbl_receiving ORDER BY rcRealtime DESC");
+// next tambahin --> where rcrealtime == tanggal hari ini.
 
 if( !isset($_SESSION['admin']) )
 {
@@ -9,6 +10,7 @@ if( !isset($_SESSION['admin']) )
 }
 
 $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
+$navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 
 ?>
 <!DOCTYPE html>
@@ -88,10 +90,13 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                	<a class="collapsible-header">Menu<i class="material-icons">arrow_drop_down</i></a>
 		                	<div class="collapsible-body">
 		                		<ul>
-		                			<li><a href="user.php">User</a></li>
+
+		                			<!--<li><a href="user.php">User</a></li>
 									<li class="active red darken-4"><a>Barang Masuk</a></li>
 									<li><a href="gudang.php">PUT AWAY</a></li>
 									<li><a href="barangkeluar.php">PICKER</a></li>
+								-->
+								<?php echo $navSide; ?>
 								</ul>
 							</div>
 		                </li>

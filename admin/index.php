@@ -1,18 +1,22 @@
 <?php
 session_start();
   
-  $user = "localhost";
-  $name = "root";
-  $pass = "";
-  $dbname = "inventori3";
+//  $user = "localhost";
+//  $name = "root";
+//  $pass = "";
+//  $dbname = "inventori3";
  
-  $con = mysqli_connect($user,$name,$pass,$dbname);
- 
-  if (!$con){
+//  $con = mysqli_connect($user,$name,$pass,$dbname);
+
+  require("../config.php");
+
+  //if (!$con){
+  if (!$koneksi){
     die ("Database Tidak Ada : " . mysqli_connect_error());
   }
-$kueri = mysqli_query($con, "SELECT * FROM users");
- 
+  
+ //$kueri = mysqli_query($con, "SELECT * FROM users");
+ $kueri = mysqli_query($koneksi,"SELECT *from tbl_user");
   $data = array ();
   while (($row = mysqli_fetch_array($kueri)) != null){
     $data[] = $row;
@@ -20,7 +24,7 @@ $kueri = mysqli_query($con, "SELECT * FROM users");
     $cont = count ($data);
     $jml = "".$cont;
 
-    $kueri2 = mysqli_query($con, "SELECT * FROM barang_masuk");
+  $kueri2 = mysqli_query($con, "SELECT * FROM barang_masuk");
  
   $data2 = array ();
   while (($row = mysqli_fetch_array($kueri2)) != null){
@@ -56,6 +60,8 @@ if( !isset($_SESSION['admin']) )
 }
 
 $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
+$navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,7 +87,7 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 	    		<div class="container">
 	    			<div class="col offset-l2 nav-wrapper">
 	    				<a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-	    				<a class="page-title">Beranda</a>
+	    				<a class="page-title">Beranda <?php echo $nama; ?></a>
 	    			</div>
 	    		</div>
 			</nav>
@@ -108,10 +114,13 @@ $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 		                	<a class="collapsible-header">Menu<i class="material-icons">arrow_drop_down</i></a>
 		                	<div class="collapsible-body">
 		                		<ul>
-		                			<li><a href="user.php">User</a></li>
+		                			
+		                			<!--<li><a href="user.php">User</a></li>
 									<li><a href="barangmasuk.php">Barang Masuk</a></li>
 									<li><a href="gudang.php">PUT AWAY</a></li>
 									<li><a href="barangkeluar.php">PICKER</a></li>
+									<li><a href="salesorder.php">SALES ORDER</a></li>		-->
+									<?php echo $navSide;?>							
 								</ul>
 							</div>
 		                </li>
