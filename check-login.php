@@ -76,7 +76,8 @@ if( strlen($username) < 2 )
 		$navPA='<li><a href="gudang.php">PUT AWAY</a></li>';
 		$navPicker='<li><a href="barangkeluar.php">PICKER</a></li>';
 		$navSO='<li><a href="salesorder.php">SALES ORDER</a></li>';
-		$_SESSION['navSide']=$navUser.$navRCV.$navPA.$navPicker.$navSO;
+		$navMR='<li><a href="MR.php">MR</a></li>';
+		$_SESSION['navSide']=$navUser.$navRCV.$navPA.$navPicker.$navSO.$navMR;
 		//
 		$_SESSION['akses']	   = $res;//level
 		//if( $row['level'] == 'admin')

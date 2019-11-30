@@ -7,10 +7,13 @@ if( !isset($_SESSION['admin']) )
   header('location:./../'.$_SESSION['akses']);
   exit();
 }
-
+$idRCV=$_GET['idrcv'];
 $nama = ( isset($_SESSION['user']) ) ? $_SESSION['user'] : '';
 $navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 
+$resRCV=mysqli_query($koneksi,"select * from tbl_receiving where idrcv=".$idRCV);
+	//kalau yang validasi sudah ketemu, pindahkan data ini ke table bawah
+	$data_RCV = mysqli_fetch_array($resRCV); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -96,10 +99,6 @@ $navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 
 							</div>
 		                </li>
-		                <li><a href="kontak.php" class="collapsible-header">Teams<i class="material-icons">contacts</i></a></li>
-
-		                <li><a href="../logout.php" class="collapsible-header">Keluar<i class="material-icons">exit_to_app</i></a></li>
-
 		            </ul>
 	            </li>
 
@@ -109,116 +108,65 @@ $navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 
 		<!--content-->
 		<main>
-			<div class="row container">
-				<div class="col s12 m12 l12 offset-l2"> <br>
-					<!--kolom search-->
-					<div class="col s12 m12 l12">
-						 
-					</div>
+			<!--
+				onsubmit="alert('submit!');return false" 
+			-->
+			<form method="post" action="control_data.php?form=putaway">
+				<div class="row container">
+					<div class="col s12 m12 l12 offset-l2"> <br>
+						<!--kolom search-->
+						<div class="col s12 m12 l12">						 
+						</div>
 
-					<!--table-->
-					<div class="col s12 m12 l12 card-panel z-depth"> <br>
-						<table class="highlight">
-							<!--kolom header table-->							
-							<tr>
-								<td>Rcv. Number</td>
-								<td>:</td>
-								<td>isi_dari_db</td>
-								<td></td>
-								<td>Kode Barang</td>
-								<td>:</td>
-								<td>isi_dari_db</td>
-				            </tr>
-				            <tr>
-								<td>Tanggal Rcv</td>
-								<td>:</td>
-								<td>isi_dari_db</td>
-								<td></td>
-								<td>Nama Barang</td>
-								<td>:</td>
-								<td>isi_dari_db</td>
-				            </tr>
-				            <tr>
-								<td>Lokasi Rencana</td>
-								<td>:</td>
-								<td>isi_dari_db</td>
-								<td></td>
-								<td>Jumlah</td>
-								<td>:</td>
-								<td>isi_dari_db</td>
-				            </tr>							
-						</table>
-					</div>
+						<!--table-->
+						<div class="col s12 m12 l12 card-panel z-depth"> <br>
+							<table class="highlight">
+								<!--kolom header table-->							
+								<tr>
+									<td>Rcv. Number</td>
+									<td>:</td>
+									<td><input class="form-control" type="text" name="idData" value=<?php echo $idRCV; ?>></td>
+									<td></td>
+									<td>Kode Barang</td>
+									<td>:</td>
+									<td>isi_dari_db</td>
+					            </tr>
+					            <tr>
+									<td>Tanggal</td>
+									<td>:</td>
+									<td><?php echo $data_RCV['tanggal']; ?></td>
+									<td></td>
+									<td>Nama Barang</td>
+									<td>:</td>
+									<td>isi_dari_db</td>
+					            </tr>
+					            <tr>
+									<td>Lokasi Rencana</td>
+									<td>:</td>
+									<td>isi_dari_db</td>
+									<td></td>
+									<td>Jumlah</td>
+									<td>:</td>
+									<td><input class="form-control" type="text" name="kuantitas" value="">
+									</td>
+					            </tr>							
+							</table>
+						</div>
 
-					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Tambah">Tambah Baris</button>
-
-					<div id="Tambah" class="modal fade" role="dialog">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-							         <h4 class="modal-title"> Tambah Baris</h4>		
-					      </div>
-					      <form method="post" enctype="multipart/form-data">
-					      	<div class="modal-body">
-					      		<div class="form-group">
-					      			<label class="control-label" for="Lokasi">Lokasi</label>
-					      			<input type="text" name="Lokasi" class="form-control" id="Lokasi" required>
-					      		</div>
-					      		<div class="form-group">
-					      			<label class="control-label" for="Jumlah">Jumlah</label>
-					      			<input type="text" name="Jumlah" class="form-control" id="Jumlah" required>
-					      		</div>
-					      	</div>
-					      	<div class="form-footer">
-					      		<button type="reset" class="btn btn-danger">Reset</button>
-					      		<input type="submit" class="btn btn-success" name="Tambah" value="simpan">
-					      	</div>
-					      </form>
-					  </div>		
-					</div>
-				</div>	
-
-					<!--table-->
-					<div class="col s12 m12 l12 card-panel z-depth"> <br>
-						<table class="highlight">
-							<!--kolom header table-->
-							<tr>
-			                  <th hidden>IDXRCV</th>	
-			                  	<th>OP_RCV</th> 
-			                  	<th>Kode Barang</th>
-								<th>Lokasi Rencana</th>
-								<th>Nama Barang</th>
-								<th>Jumlah</th>
-							
-				            </tr>
-
-							<?php 
-
-							while($user_data = mysqli_fetch_array($result)) { 
-			                    $test = $user_data['nama_barang'];      
-				                echo "<tr>";
-			                    echo "<td hidden>".$user_data['id']."</td>";
-				                echo "<td>".$user_data['kode_barang']."</td>";
-				                echo "<td>".$user_data['nama_barang']."</td>";
-				                echo "<td>".$user_data['pengirim']."</td>";
-			                    echo "<td>".$user_data['tanggal']."</td>"; 
-			                    echo "<td>".$user_data['penerima']."</td>";    
-				                echo "</tr>";  
-				            }
-
-							?>
-							
-						</table>
+						<button type="Submit" class="btn btn-success" data-toggle="modal" data-target="#Tambah">Submit</button>
+						<a class="btn btn-primary" href="gudang.php" role="button">Back to Menu</a>
 					</div>
 				</div>
-			</div>
+			</form>
+			<!-- pr kekurangan 
+				1. ketika text brgmasuk berubah melakukan validasi 
+				2. jika "true" next "sukses" , lalu ketikan "salah" kembali tanpa save -->
+
 		</main>
         <!--end of content-->
 
 
 	</div>
-
 	<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../js/materialize.min.js"></script>
 	<script type="text/javascript">

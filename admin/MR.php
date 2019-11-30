@@ -70,7 +70,7 @@ $navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 	    		<div class="container">
 	    			<div class="col offset-l2 nav-wrapper">
 	    				<a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-	    				<a class="page-title">PUT AWAY</a>
+	    				<a class="page-title">MR</a>
 	    			</div>
 	    		</div>
 			</nav>
@@ -136,14 +136,15 @@ $navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 						<table class="highlight">
 							<!--kolom header table-->
 							<tr>
-			                  <th hidden>IDXRCV</th>	
+			                  <th hidden>NO_PO</th>	
 			                  	<th>
-			                  		<li><a href="putway_entry.php">OP_RCV</a></li></th>
-								<th>Tanggal</th>
-								<th>No Surat</th>
-								<th>Masuk RCV</th>
-								<th>Proses PA</th>
-								<th>Belum Proses PA</th>
+			                  		<li><a href="mr_entry.php">Supplier</a></li></th>
+								<th>kode_barang</th>
+								<th>nama barang</th>
+								<th>IDXPO</th>
+								<th>Jumlah</th>
+								<th>Terkirim</th>
+								<th>Belum Terkirim</th>
 				            </tr>
 
 							<?php 
@@ -162,7 +163,7 @@ $navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 							while($OSPutaway=mysqli_fetch_array($result))
 							{
 								echo "<tr>";
-									echo "<td><li><a href=putway_entry.php?idrcv=".$OSPutaway['idrcv'].">".$OSPutaway['idrcv']."</a></li></td>";
+									echo "<td><li><a href=mr_entry.php?idrcv=".$OSPutaway['idrcv'].">".$OSPutaway['idrcv']."</a></li></td>";
 									echo "<td>".$OSPutaway['Tanggal']."</td>";
 									echo "<td>".$OSPutaway['NoSurat']."</td>";
 									echo "<td>".$OSPutaway['MasukRCV']."</td>";

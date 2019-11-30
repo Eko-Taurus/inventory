@@ -150,14 +150,14 @@ $navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 						</table>
 					</div>
 
-					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Tambah">Tambah Baris</button>
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Tambah">Submit</button>
 
 					<div id="Tambah" class="modal fade" role="dialog">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
-							         <h4 class="modal-title"> Tambah Baris</h4>		
+							         <h4 class="modal-title">Submit</h4>		
 					      </div>
 					      <form method="post" enctype="multipart/form-data">
 					      	<div class="modal-body">

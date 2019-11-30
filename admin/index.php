@@ -53,6 +53,16 @@ session_start();
     $cont4 = count ($data4);
     $jml4 = "".$cont4;
 
+
+  $kueri5 = mysqli_query($con, "SELECT * FROM MR");
+ 
+  $data5 = array ();
+  while (($row = mysqli_fetch_array($kueri5)) != null){
+    $data5[] = $row;
+  }
+    $cont5 = count ($data5);
+    $jml5 = "".$cont5;
+
 if( !isset($_SESSION['admin']) )
 {
   header('location:./../'.$_SESSION['akses']);
@@ -119,7 +129,9 @@ $navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 									<li><a href="barangmasuk.php">Barang Masuk</a></li>
 									<li><a href="gudang.php">PUT AWAY</a></li>
 									<li><a href="barangkeluar.php">PICKER</a></li>
-									<li><a href="salesorder.php">SALES ORDER</a></li>		-->
+									<li><a href="salesorder.php">SALES ORDER</a></li>
+									<li><a href="MR.php">MR</a></li>		
+									-->
 									<?php echo $navSide;?>							
 								</ul>
 							</div>
@@ -173,7 +185,7 @@ $navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 		                </div>
 	                </div>
 
-	                <!--content Gudang-->
+	                <!--content PUTAWAY-->
 					<div class="col s12 m6 l6">
 		                <div class="card blue-grey lighten-5">
 		                    <div class="card-content red-text text-darken-2">
@@ -190,7 +202,25 @@ $navSide = ( isset($_SESSION['navSide']) ) ? $_SESSION['navSide'] : '';
 		                </div>
 	                </div>
 
-	                <!--content barang Keluar-->
+
+	                <!--content MR-->
+					<div class="col s12 m6 l6">
+		                <div class="card blue-grey lighten-5">
+		                    <div class="card-content red-text text-darken-2">
+			                    <span class="card-title">MR
+			                        <i class="medium material-icons left">archive</i>
+			                        <p class="right"><?php echo $jml5; ?></p>
+			                    </span>
+		                    </div>
+		                    
+		                    <div class="card-action">
+		                    	<i class="material-icons left red-text text-darken-2">visibility</i>
+		                    	<a href="MR.php" class="red-text text-darken-2">Lihat</a>
+		                    </div>
+		                </div>
+	                </div>
+
+	                <!--content PICKER-->
 					<div class="col s12 m6 l6">
 		                <div class="card blue-grey lighten-5">
 		                    <div class="card-content red-text text-darken-2">
